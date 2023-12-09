@@ -21,9 +21,36 @@ def count_stair_ways(n):
         #result_last1 = count_stair_ways(n-1) + 1       # 计算当最后一步只需迈一个的时候方法
         # result_last2 = count_stair_ways(n-2)       # 计算当最后一步为两个台阶的方法
         #result = result_last2 + count_stair_ways(2)
-        result = count_stair_ways(n-2) + count_stair_ways(n-1) 
+        result = count_stair_ways(n-2) + count_stair_ways(n-1)     # Q2 Count Stair Ways: FINISHED
     return result
     # 问题本身相当于将n按照不大于2进行分割有多少种方法：           # Q1: Count Stair Ways skip
+
+# Q2: Count K
+def count_k(n, k):
+    """Counts the number of paths up a flight of n stairs
+    when taking up to k steps at a time.
+    >>> count_k(3, 3) # 3, 2 + 1, 1 + 2, 1 + 1 + 1
+    4
+    >>> count_k(4, 4)
+    8
+    >>> count_k(10, 3)
+    274
+    >>> count_k(300, 1) # Only one step at a time
+    1
+    """
+    "*** YOUR CODE HERE ***"
+    result = 0
+    if n == 1:
+        result = 1
+    elif k == 1:
+        result = n
+    #elif n == k:
+    #    result = 1
+    else:
+        #for i in range(1, k+1):
+        #    result += count_k(n, n - k)
+        result = count_k(n-k, k) + count_k(k, k)
+    return result
 
     
     
