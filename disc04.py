@@ -67,9 +67,30 @@ def paths(m, n):
     "*** YOUR CODE HERE ***"
     # 假设到达目标地左侧（m，n-1）位置后（用了N1种放啊），只需要再往右移动一下，或者到达目标地下面（m-1， n）（用了N2种方法）后再往上移动一下
     if m == 1 or n == 1:
-        return 1       # 只有一种方法，初始就是位置，不需要移动
+        return 1       # 只有一种方法，如果初始位置在目的地的左侧或者下方，也是本题的基底。
     else:
-        return paths(m - 1, n) + paths(m, n - 1)
+        return paths(m - 1, n) + paths(m, n - 1)        # Q3: Insect Combinatorics finish
+    
+# Q4: Max Product
+def max_product(s):
+    """Return the maximum product that can be formed using
+    non-consecutive elements of s.
+    >>> max_product([10,3,1,9,2]) # 10 * 9
+    90
+    >>> max_product([5,10,5,10,5]) # 5 * 5 * 5
+    125
+    >>> max_product([])
+    1
+    """
+    "*** YOUR CODE HERE ***"
+    if s == []:
+        return 1
+    if len(s) == 1:
+        return s[0]
+    else:
+        return max(s[0] * max_product(s[2:]), max_product(s[1:]))
+        # OR
+    #    return max(s[0] * max_product(s[2:]), s[1] * max_product(s[3:]))
 
 
 
