@@ -25,6 +25,7 @@ def count_stair_ways(n):
     return result
     # 问题本身相当于将n按照不大于2进行分割有多少种方法：           # Q1: Count Stair Ways skip
 
+
 # Q2: Count K
 def count_k(n, k):
     """Counts the number of paths up a flight of n stairs
@@ -48,6 +49,29 @@ def count_k(n, k):
         for step in range(1, k + 1):
             total += count_k(n - step, k)
         return total          # Q2: Count K SKIP       # Q2: Count K: answer  
+
+# Q3: Insect Combinatorics
+def paths(m, n):
+    """Return the number of paths from one corner of an
+    M by N grid to the opposite corner.
+
+    >>> paths(2, 2)
+    2
+    >>> paths(5, 7)
+    210
+    >>> paths(117, 1)
+    1
+    >>> paths(1, 157)
+    1
+    """
+    "*** YOUR CODE HERE ***"
+    # 假设到达目标地左侧（m，n-1）位置后（用了N1种放啊），只需要再往右移动一下，或者到达目标地下面（m-1， n）（用了N2种方法）后再往上移动一下
+    if m == 1 or n == 1:
+        return 1       # 只有一种方法，初始就是位置，不需要移动
+    else:
+        return paths(m - 1, n) + paths(m, n - 1)
+
+
 
     
     
