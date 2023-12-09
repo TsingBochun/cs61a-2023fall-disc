@@ -39,18 +39,15 @@ def count_k(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
-    result = 0
-    if n == 1:
-        result = 1
-    elif k == 1:
-        result = n
-    #elif n == k:
-    #    result = 1
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
     else:
-        #for i in range(1, k+1):
-        #    result += count_k(n, n - k)
-        result = count_k(n-k, k) + count_k(k, k)
-    return result
+        total = 0
+        for step in range(1, k + 1):
+            total += count_k(n - step, k)
+        return total          # Q2: Count K SKIP       # Q2: Count K: answer  
 
     
     
