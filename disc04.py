@@ -90,7 +90,39 @@ def max_product(s):
     else:
         return max(s[0] * max_product(s[2:]), max_product(s[1:]))
         # OR
-    #    return max(s[0] * max_product(s[2:]), s[1] * max_product(s[3:]))
+    #    return max(s[0] * max_product(s[2:]), s[1] * max_product(s[3:]))      q4 ANSWER
+
+# Q5: Flatten
+def flatten(s):
+    """Returns a flattened version of list s.
+
+    >>> flatten([1, 2, 3])
+    [1, 2, 3]
+    >>> deep = [1, [[2], 3], 4, [5, 6]]
+    >>> flatten(deep)
+    [1, 2, 3, 4, 5, 6]
+    >>> deep                                # input list is unchanged
+    [1, [[2], 3], 4, [5, 6]]
+    >>> very_deep = [['m', ['i', ['n', ['m', 'e', ['w', 't', ['a'], 't', 'i', 'o'], 'n']], 's']]]
+    >>> flatten(very_deep)
+    ['m', 'i', 'n', 'm', 'e', 'w', 't', 'a', 't', 'i', 'o', 'n', 's']
+    """
+    "*** YOUR CODE HERE ***"
+    # 假设除最后一个元素外的前面所欲元素用该函数已经完成，只需判断最后一个元素是否为list，或者说不需要判断，直接用list改造成list就行
+    #list = []
+    #if len(s) == 1:
+    #    list = s
+    #else:
+    #    list = flatten( s[ 0: len(s) - 2 ] ) + flatten ( s[ len(s) - 1 ] )
+    #return list
+
+    lst = []
+    for elem in s:
+        if type(elem) == list:
+            lst += flatten(elem)
+        else:
+            lst += [elem]
+    return lst               # 这个解法并不是递归   # Q5: Flatten 非递归解法
 
 
 
