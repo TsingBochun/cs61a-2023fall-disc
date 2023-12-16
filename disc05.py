@@ -70,4 +70,18 @@ def lt_rat(x, y):
     result = (x_1 * y_0 - x_0 * y_1) / x_0 * y_0
     if result < 0:
         return True
-    return False
+    return False        # Q3: Less Than FINISHED
+
+# Q5: Height
+def height(t):
+    """Return the height of a tree.
+    >>> t = tree(3, [tree(5, [tree(1)]), tree(2)])
+    >>> height(t)
+    2
+    >>> t = tree(3, [tree(1), tree(2, [tree(5, [tree(6)]), tree(1)])])
+    >>> height(t)
+    3
+    """
+    "*** YOUR CODE HERE ***" # TREE的问题先SKIP还有递归
+
+
