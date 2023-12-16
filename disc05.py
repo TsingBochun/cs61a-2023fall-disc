@@ -21,4 +21,24 @@ def numer(rat):
 def denom(rat):
     """Extracts the denominator from a rational number."""
     "*** YOUR CODE HERE ***"
-    return rat[1]
+    return rat[1]           # Q1: Extending Rationals FINISHED
+
+
+
+# Q2: Divide
+def div_rat(x, y):
+    """The quotient of rationals x/y.
+    >>> a, b = make_rat(3, 4), make_rat(5, 3)
+    >>> c = div_rat(a, b)
+    >>> numer(c)
+    9
+    >>> denom(c)
+    20
+    """
+    "*** YOUR CODE HERE ***"
+    result = [0, 0]
+    # 分子是，X的分子，乘以Y的分母
+    result[0] = numer(x) * denom(y)
+    # 分母是，X的分母，乘以Y的分子
+    result[1] = denom(x) * numer(y)
+    return result
