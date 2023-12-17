@@ -82,10 +82,13 @@ def height(t):
     >>> height(t)
     3
     """
-    "*** YOUR CODE HERE ***" # TREE的问题先SKIP还有递归
+    "*** YOUR CODE HERE ***" # TREE的问题先SKIP还有递归      # 把这道题改到LAB05里面做
+    if is_leaf(t) == True:
+        return 0
+    else:
+        return max([height(b) for b in branches(t)])
 
 # Tree ADT
-
 def tree(label, branches=[]):
     """Construct a tree with the given label value and a list of branches."""
     if change_abstraction.changed:
