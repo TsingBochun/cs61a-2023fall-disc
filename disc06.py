@@ -47,7 +47,7 @@ def differences(it):
 
 
 
-#Q5: Primes Generator
+# Q5: Primes Generator
 def is_prime(n):
     """Returns True if n is a prime number and False otherwise.
     >>> is_prime(2)
@@ -75,6 +75,38 @@ def primes_gen(n):
     iterator = reversed(range(2, n+1))
     for term in iterator:
         if is_prime(term):
-            yield term
+            yield term                 # Q5: Primes Generator FINISHED
 
     
+
+# Q6: Stair Ways
+def stair_ways(n):
+    """
+    Yields all ways to climb a set of N stairs taking
+    1 or 2 steps at a time.
+
+    >>> list(stair_ways(0))
+    [[]]
+    >>> s_w = stair_ways(4)
+    >>> sorted([next(s_w) for _ in range(5)])
+    [[1, 1, 1, 1], [1, 1, 2], [1, 2, 1], [2, 1, 1], [2, 2]]
+    >>> list(s_w) # Ensure you're not yielding extra
+    []
+    """
+    "*** YOUR CODE HERE ***"
+    if n == 0:
+        yield []
+    elif n == 1:
+        yield [1]
+    else:
+        for way in stair_ways(n - 1):
+            yield [1] + way
+        for way in stair_ways(n - 2):
+            yield [2] + way
+
+
+# Practice 练习区域：# 只能在1和2之间取值，最后所有数字综合为5
+def gen_5():
+    for i in range(1, 3):
+        list = []
+
