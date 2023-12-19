@@ -20,4 +20,26 @@ def filter_iter(iterable, f):
     "*** YOUR CODE HERE ***"
     for element in iterable:
         if f(element):
-            yield element 
+            yield element     # Q3: Filter-Iter FINISHED
+
+# Q4: What's the Difference?
+def differences(it):
+    """ 
+    Yields the differences between successive terms of iterable it.
+
+    >>> d = differences(iter([5, 2, -100, 103]))
+    >>> [next(d) for _ in range(3)]
+    [-3, -102, 203]
+    >>> list(differences([1]))
+    []
+    """
+    "*** YOUR CODE HERE ***"
+    lst = []
+    t = it
+    #lst.append(next(it))
+    lst.append(next(t))
+    while True:
+        #tmp = next(it)
+        tmp = next(t)
+        yield tmp - lst[-1]
+        lst.append(tmp)         # ⭐️写到这里
