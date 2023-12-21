@@ -99,10 +99,10 @@ def stair_ways(n):
     elif n == 1:
         yield [1]
     else:
-        for way in stair_ways(n - 1):
+        for way in stair_ways(n - 1):          # 在这里的时候不断地被递归
             yield [1] + way
-        for way in stair_ways(n - 2):
-            yield [2] + way
+        for way in stair_ways(n - 2):          # 在这里的时候不断地被递归
+            yield [2] + way            # Q6: Stair Ways FINISHED       #为什么这里可以有两个yield这就是和return的区别，yield本来就是“多个返回值”
 
 
 # Practice 练习区域：# 只能在1和2之间取值，最后所有数字综合为5
