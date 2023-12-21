@@ -194,6 +194,7 @@ class Cat(Pet):
         else:
             #____________________________
             print("This cat still has lives to lose.")
+        
 
 # Q6: NoisyCat
 # class __________ # Fill me in!
@@ -212,9 +213,43 @@ class NoisyCat(Cat):
         """
         "*** YOUR CODE HERE ***"
         for _ in range(2):
-            print(self.name + " says meow!")
+            print(self.name + " says meow!")    # Q6: NoisyCat FINISHED
+
+# Q7: WWPD: Repr-esentation
+class Car:
+    def __init__(self, color):
+        self.color = color
+
+    def __repr__(self):
+         return self.color
+
+    def __str__(self):
+         return self.color * 2
+
+class Garage:
+    def __init__(self):
+         print('Vroom!')
+         self.cars = []
+
+    def add_car(self, car):
+         self.cars.append(car)
+
+    def __repr__(self):
+         print(len(self.cars))
+         ret = ''
+         for car in self.cars:
+             ret += str(car)
+         return ret             # Q7: WWPD: Repr-esentation FINISHED
+    
+# Q8: Cat Representation
+# (The rest of the Cat class is omitted here, but assume all methods from the Cat class above are implemented)
+    def __repr__(self):
+        "*** YOUR CODE HERE ***"
+    def __str__(self):
+        "*** YOUR CODE HERE ***"
 
 
+# Q7 and Q8 needs TODO
     
 
 
