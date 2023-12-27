@@ -67,7 +67,7 @@ def remove_all(link, value):
         return                        # 这里的return是可以的，因为没有return实物，所以就是return nothing，题目中说了firs永远不不可能是value，所以不用考虑单元素是value的情况
     if link.rest.first == value:
         link.rest = link.rest.rest
-        remove_all(link, value)       # 这里完完全全是对自己的函数再调用一遍
+        remove_all(link, value)       # 这里完完全全是对自己的函数再调用一遍，这种写法是递归和突变的结合？
     else:
         remove_all(link.rest, value)      # Q3: Remove All 学习标准答案
             
@@ -87,6 +87,15 @@ def flip_two(s):
     Link(2, Link(1, Link(4, Link(3, Link(5)))))
     """
     "*** YOUR CODE HERE ***"
+    tmp = 0
+    if s.rest is Link.empty:
+        return
+    tmp = s.rest.first
+    s.rest.first = s.first
+    s.first = tmp
+    flip_two(s.rest.rest)       # Q4: Flip Two FINISHED
+
+
 
 
 
