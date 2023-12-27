@@ -95,6 +95,27 @@ def flip_two(s):
     s.first = tmp
     flip_two(s.rest.rest)       # Q4: Flip Two FINISHED
 
+# Q5: Make Circular
+def make_circular(s):
+    """Mutates linked list s into a circular linked list.
+
+    >>> lnk = Link(1, Link(2, Link(3)))
+    >>> make_circular(lnk)
+    >>> lnk.rest.first
+    2
+    >>> lnk.rest.rest.first
+    3
+    >>> lnk.rest.rest.rest.first
+    1
+    >>> lnk.rest.rest.rest.rest.first
+    2
+    """
+    "*** YOUR CODE HERE ***"
+    tmp = s
+    while tmp.rest is not Link.empty:
+        tmp = tmp.rest
+    tmp.rest = s                           # Q5: Make Circular FINISHED
+
 
 
 
