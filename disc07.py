@@ -245,9 +245,10 @@ class Garage:
 # (The rest of the Cat class is omitted here, but assume all methods from the Cat class above are implemented)
     def __repr__(self):
         "*** YOUR CODE HERE ***"
+        return self.name + ", " + str(self.lives) + " lives"   # 我理解的是REPR方法是直接输入对象就能出来，str是print函数调用的
     def __str__(self):
         "*** YOUR CODE HERE ***"
-
+        return self.name
 
 # Q7 and Q8 needs TODO
     
