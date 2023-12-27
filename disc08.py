@@ -63,25 +63,32 @@ def remove_all(link, value):
     <0 1>
     """
     "*** YOUR CODE HERE ***"
-    remain = link.rest
-    if remain is Link.empty:
-        return 
+    if link is Link.empty or link.rest is Link.empty:
+        return                        # 这里的return是可以的，因为没有return实物，所以就是return nothing，题目中说了firs永远不不可能是value，所以不用考虑单元素是value的情况
+    if link.rest.first == value:
+        link.rest = link.rest.rest
+        remove_all(link, value)       # 这里完完全全是对自己的函数再调用一遍
     else:
-        while True:
-            if remain.first == value:
-                remain = remain.rest
-            else:
-                link.rest = remain
-                remain = 
-        #    link.rest = remain.rest
-            link.rest = remain.rest
-            print(link)   # only for debug
-    #remove_all(link.rest, value)
-    #if link.rest is link.empty:
-    #    return
-    #elif link.rest.first == value:
-    #    link.rest = link.rest.rest
-    #remove_all(link, value)
+        remove_all(link.rest, value)      # Q3: Remove All 学习标准答案
+            
+
+# Q4: Flip Two
+def flip_two(s):
+    """
+    Flips every pair of values in s.
+
+    >>> one_lnk = Link(1)
+    >>> flip_two(one_lnk)
+    >>> one_lnk
+    Link(1)
+    >>> lnk = Link(1, Link(2, Link(3, Link(4, Link(5)))))
+    >>> flip_two(lnk)
+    >>> lnk
+    Link(2, Link(1, Link(4, Link(3, Link(5)))))
+    """
+    "*** YOUR CODE HERE ***"
+
+
 
 
 # Q5: Make Circular
