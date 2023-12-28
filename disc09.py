@@ -31,3 +31,27 @@ def paths(x, y):
         a = paths(x + 1, y)
         b = paths(x * 2, y)
         return [[x] + subpath for subpath in a + b]   # Q2: Paths List FINISHED # 几乎所有正面思考难以解决的问题都可以用递归解决
+    
+# Q3: Widest Level
+def widest_level(t):
+    """
+    >>> sum([[1], [2]], [])
+    [1, 2]
+    >>> t = Tree(3, [Tree(1, [Tree(1), Tree(5)]),
+    ...              Tree(4, [Tree(9, [Tree(2)])])])
+    >>> widest_level(t)
+    [1, 5, 9]
+    """
+    levels = []
+    x = [t]
+#    while _____________:
+#         _____________
+#         __________ = sum(_______________________________, [])
+#    return max(levels, key=_________________________________)
+    #levels = []
+    #x = [t]
+    while x:
+        levels.append([t.label for t in x])
+        x = sum([t.branches for t in x], [])       # Q3: Widest Level 完全没看懂
+    return max(levels, key=len)
+    
