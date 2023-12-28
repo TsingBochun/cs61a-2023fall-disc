@@ -157,4 +157,27 @@ def shuffle(cards):
         shuffled.append(cards[half+i])
     return shuffled
 
+# Q7: Pow
+def lgk_pow(n,k):
+    """Computes n^k.
+
+    >>> lgk_pow(2, 3)
+    8
+    >>> lgk_pow(4, 2)
+    16
+    >>> a = lgk_pow(2, 100000) # make sure you have log time
+    """
+    "*** YOUR CODE HERE ***"
+    if k == 0:
+         return 1
+    elif k % 2 == 0:
+         return square(lgk_pow(n, k//2))
+    else:
+         return n * lgk_pow(n, k-1)
+    
+# square func
+def square(x):
+     return x * x         # Q7 finished
+
+
     
