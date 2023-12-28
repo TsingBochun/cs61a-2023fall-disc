@@ -301,4 +301,84 @@ class Nickel(Coin):
 class Dime(Coin):
     cents = 10
 
+# Q11: Every Other
+def every_other(s):
+    """Mutates a linked list so that all the odd-indiced elements are removed
+    (using 0-based indexing).
+
+    >>> s = Link(1, Link(2, Link(3, Link(4))))
+    >>> every_other(s)
+    >>> s
+    Link(1, Link(3))
+    >>> odd_length = Link(5, Link(3, Link(1)))
+    >>> every_other(odd_length)
+    >>> odd_length
+    Link(5, Link(1))
+    >>> singleton = Link(4)
+    >>> every_other(singleton)
+    >>> singleton
+    Link(4)
+    """
+    "*** YOUR CODE HERE ***"
+    if s is Link.empty or s.rest is Link.empty:
+        return                                   # return 的意思才是 do nothing？
+    else:
+        s.rest = s.rest.rest
+        every_other(s.rest)                 # 我明白了这是“变异”但不是递归，虽然它也调用了自己，是先执行上面的再到这一句
+
+
+
+# linked list ADT
+class Link:
+    empty = ()
+
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)     # 断言剩余要么是空表，要么是一个LINK
+        self.first = first
+        self.rest = rest
+
+    def __repr__(self):
+        if self.rest is not Link.empty:
+            rest_repr = ', ' + repr(self.rest)
+        else:
+            rest_repr = ''
+        return 'Link(' + repr(self.first) + rest_repr + ')'
+    
+    def __str__(self):
+        string = '<'
+        while self.rest is not Link.empty:
+            string += str(self.first) + ' '
+            self = self.rest
+        return string + str(self.first) + '>' 
+    
+
+# Q12: Insert
+def insert(link, value, index):
+    """Insert a value into a Link at the given index.
+
+    >>> link = Link(1, Link(2, Link(3)))
+    >>> print(link)
+    <1 2 3>
+    >>> other_link = link
+    >>> insert(link, 9001, 0)
+    >>> print(link)
+    <9001 1 2 3>
+    >>> link is other_link # Make sure you are using mutation! Don't create a new linked list.
+    True
+    >>> insert(link, 100, 2)
+    >>> print(link)
+    <9001 1 100 2 3>
+    >>> insert(link, 4, 5)
+    Traceback (most recent call last):
+        ...
+    IndexError: Out of bounds!
+    """
+    "*** YOUR CODE HERE ***"
+    if index == 0:
+        link.rest = Link(link.first, link.rest)
+        link.first = value
+    elif link.rest is Link.empty:
+        raise IndexError("Out of bounds!")
+    else:
+        insert(link.rest, value, index - 1)      # Q12: Insert 学习答案，变异性这部分我真的要再认真学习一下
     
